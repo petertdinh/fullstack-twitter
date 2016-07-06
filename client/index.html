@@ -1,0 +1,45 @@
+<!doctype html>
+<html ng-app="app">
+    <head>
+        <title>Fullstack Twitter</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:700' rel='stylesheet' type='text/css'>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.0/angular-ui-router.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+        <script src="twitterController.js"></script>
+        <script src="app.js"></script>
+    </head>
+    <body ng-controller="twitterController">
+    <div class="container">
+        <header>Fullstack Twitter</header>
+        <form ng-submit="getTweets(user)">
+          <span class="glyphicon glyphicon-search"></span><strong><span class="query">Search user timeline:</span></strong><br>
+          <input class="search-bar" type="text" name="user" ng-model="user" placeholder="Twitter handle">
+          <input type="submit" value="search" class="btn btn-info"><br>
+        </form>
+        <span>
+        <form ng-submit="hashFilter(hashtag)">
+            <div ng-show="tweets.length">    
+              <span class="glyphicon glyphicon-search"></span><strong><span class="query">Search by hashtag:</span></strong><br>
+              <input class="search-bar" type="text" name="hashtag" ng-model="hashtag" placeholder="Exclude the hash">
+              <input type="submit" value="search" class="btn btn-info"><br>
+            </div>
+        </form>    
+        </span>
+        <div id="tweet-feed" class="animate well well-lg" ng-hide="filtered" ng-repeat="tweet in tweets">
+            <p class="timestamp"><strong>{{tweet.created_at.slice(0, 20)}}</strong></p>
+            <p class="tweet">{{tweet.text}}</p>
+        </div>
+        <div id="filter-feed" class="animate well well-lg" ng-show="filtered" ng-repeat="tweet in filtered">
+            <p class="timestamp">{{tweet.created_at}}</p>
+            <p class="tweet">{{tweet.text}}</p>
+        </div>
+    </div>
+    </body>
+</html>

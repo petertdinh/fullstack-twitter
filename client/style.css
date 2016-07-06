@@ -1,0 +1,23 @@
+body {
+	background-color: #C0DEED !important;
+	background-image: url('clouds.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.search-bar{
+	margin-bottom: 5px;
+}
+.well{
+	background: white !important;
+}
+.query{
+	font-family: 'Slabo 27px', serif;
+	font-size: 135%;
+	color: white;
+}
+header{
+	text-align:center;
+	font-family: 'Open Sans', sans-serif;
+	color: white;
+	font-size: 300%;
+}
